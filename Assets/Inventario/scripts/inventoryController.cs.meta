@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e0bfd0e3e825753489ce2dc1e09d88e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inventoryPanel: {instanceID: 0}
+  - slotPrefab: {instanceID: 0}
+  executionOrder: 200
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
