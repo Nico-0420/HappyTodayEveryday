@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/Nivel 1.unity
+    guid: d0d588eb8cfa72942a42996c907cb98b
+  - enabled: 1
+    path: Assets/Scenes/Pasillo 1.unity
+    guid: ade748bb178778240bb9f5c60641a3cc
+  - enabled: 1
+    path: Assets/Scenes/Nivel 2.unity
+    guid: 3c6b488bf6786c44ab19f9d515fccfc9
+  - enabled: 1
+    path: Assets/Scenes/Pasillo 2.unity
+    guid: 4b8d40dd431235e438ec89336e462375
+  - enabled: 1
     path: Assets/Scenes/Pasillo.unity
     guid: 910ab12133c2cc34791917b40751328b
   - enabled: 1

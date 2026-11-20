@@ -47,4 +47,13 @@ public class movimiento : MonoBehaviour
         y= Input.GetAxisRaw("Vertical");
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            moveSpeed = 0;
+            x = 0;
+        }
+    }
+
 }

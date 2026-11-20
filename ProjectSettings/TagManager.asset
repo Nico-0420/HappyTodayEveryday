@@ -7,11 +7,12 @@ TagManager:
   - Item
   - Key
   - Interaction
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
   - 
