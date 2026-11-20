@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +15,9 @@ public class inventoryController : MonoBehaviour
     public float slotPadding = 12f;
     public Vector3 inventoryItemScale = new Vector3(2f, 2f, 2f);
 
+    [Header("Slot grande de vista previa")]
+    [SerializeField] private Image slotGrandePreview;
+
     public static inventoryController Instance { get; private set; }
 
     void Awake()
@@ -32,43 +34,41 @@ public class inventoryController : MonoBehaviour
         InitializeSlots();
     }
 
-
-
-private void PlaceItemInSlot(GameObject itemObject, Transform slotTransform)
-{
-    RectTransform rect = itemObject.GetComponent<RectTransform>();
-
-    if (rect != null)
+    private void PlaceItemInSlot(GameObject itemObject, Transform slotTransform)
     {
-        rect.SetParent(slotTransform, false);
+        RectTransform rect = itemObject.GetComponent<RectTransform>();
 
-        rect.anchorMin = new Vector2(0.5f, 0.5f);
-        rect.anchorMax = new Vector2(0.5f, 0.5f);
-        rect.pivot = new Vector2(0.5f, 0.5f);
-
-        rect.anchoredPosition = Vector2.zero;
-        rect.localRotation = Quaternion.identity;
-
-        // Mantener el tamaño deseado
-        rect.sizeDelta = new Vector2(50f, 50f);
-
-        rect.localScale = Vector3.one;
-
-        Image img = itemObject.GetComponentInChildren<Image>();
-
-        if (img != null)
+        if (rect != null)
         {
-            img.preserveAspect = true;
+            rect.SetParent(slotTransform, false);
+
+            rect.anchorMin = new Vector2(0.5f, 0.5f);
+            rect.anchorMax = new Vector2(0.5f, 0.5f);
+            rect.pivot = new Vector2(0.5f, 0.5f);
+
+            rect.anchoredPosition = Vector2.zero;
+            rect.localRotation = Quaternion.identity;
+
+            // Mantener el tamaño deseado
+            rect.sizeDelta = new Vector2(50f, 50f);
+
+            rect.localScale = Vector3.one;
+
+            Image img = itemObject.GetComponentInChildren<Image>();
+
+            if (img != null)
+            {
+                img.preserveAspect = true;
+            }
+        }
+        else
+        {
+            itemObject.transform.SetParent(slotTransform, false);
+            itemObject.transform.localPosition = Vector3.zero;
+            itemObject.transform.localRotation = Quaternion.identity;
+            itemObject.transform.localScale = Vector3.one;
         }
     }
-    else
-    {
-        itemObject.transform.SetParent(slotTransform, false);
-        itemObject.transform.localPosition = Vector3.zero;
-        itemObject.transform.localRotation = Quaternion.identity;
-        itemObject.transform.localScale = Vector3.one;
-    }
-}
 
     void InitializeSlots()
     {
@@ -128,7 +128,6 @@ private void PlaceItemInSlot(GameObject itemObject, Transform slotTransform)
         }
 
         Debug.Log("Intentando agregar objeto ID: " + itemToAdd.ID);
-
 
         foreach (Transform slotTransform in inventoryPanel.transform)
         {
@@ -253,7 +252,6 @@ private void PlaceItemInSlot(GameObject itemObject, Transform slotTransform)
         }
     }
 
-
     public int CountItemByID(int itemID)
     {
         int total = 0;
@@ -274,5 +272,23 @@ private void PlaceItemInSlot(GameObject itemObject, Transform slotTransform)
         }
 
         return total;
+    }
+
+    public void MostrarEnSlotGrande(GameObject objetoSeleccionado)
+    {
+        if (slotGrandePreview == null || objetoSeleccionado == null) return;
+
+        Image img = objetoSeleccionado.GetComponent<Image>();
+        if (img == null)
+        {
+            img = objetoSeleccionado.GetComponentInChildren<Image>();
+        }
+
+        if (img != null && img.sprite != null)
+        {
+            slotGrandePreview.sprite = img.sprite;
+            slotGrandePreview.preserveAspect = true;
+            slotGrandePreview.enabled = true;
+        }
     }
 }
