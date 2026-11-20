@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class ControlInventario : MonoBehaviour
 {
-    public GameObject inventario;
+    public GameObject Inventario;
 
     public void AbrirCerrarInventario()
     {
-        inventario.SetActive(!inventario.activeSelf);
+        Inventario.SetActive(!Inventario.activeSelf);
     }
 }
