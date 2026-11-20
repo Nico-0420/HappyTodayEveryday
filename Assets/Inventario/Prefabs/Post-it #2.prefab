@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1089548495645394281}
   - component: {fileID: 5185030758501032875}
   - component: {fileID: 2656561868083471118}
+  - component: {fileID: -3627695594465909678}
   m_Layer: 5
   m_Name: Post-it #2
   m_TagString: Item
@@ -213,3 +214,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemDrag
   minDropDistance: 2
   maxDropDistance: 3
+--- !u!225 &-3627695594465909678
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549294609394020061}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
