@@ -1,48 +1,69 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menudepausa : MonoBehaviour
+public class MenuPausa : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject pausebutton;
-    public GameObject ManuPausa;
-    public GameObject inventarioButton;
+    [Header("Paneles UI")]
+    [SerializeField] private GameObject panelPausa;
+    [SerializeField] private GameObject panelOpciones;
 
-    public void PauseGame()
+    [Header("Configuración de Escenas")]
+    [SerializeField] private string nombreEscenaMenu = "MenuInicial"; 
+
+    public static bool juegoPausado = false;
+
+    void Update()
     {
-        Time.timeScale = 0;
-
-        pausebutton.SetActive(false);
-        inventarioButton.SetActive(false);
-        pauseMenu.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (juegoPausado)
+                Reanudar();
+            else
+                Pausar();
+        }
     }
 
-    public void ResumeGame()
+    public void Pausar()
     {
-        Time.timeScale = 1;
-
-        pauseMenu.SetActive(false);
-        ManuPausa.SetActive(false);
-
-        pausebutton.SetActive(true);
-        inventarioButton.SetActive(true);
+        panelPausa.SetActive(true);
+        panelOpciones.SetActive(false); 
+        Time.timeScale = 0f;
+        juegoPausado = true;
     }
 
-    public void RestartGame()
+
+    public void Reanudar()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        panelPausa.SetActive(false);
+        panelOpciones.SetActive(false);
+        Time.timeScale = 1f;
+        juegoPausado = false;
     }
 
-    public void QuitGame()
+    public void AbrirOpciones()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene("MenuPrincipal");
+        panelPausa.SetActive(false);
+        panelOpciones.SetActive(true);
     }
 
-    public void Opciones()
+    public void CerrarOpciones()
     {
-        ManuPausa.SetActive(true);
+        panelOpciones.SetActive(false);
+        panelPausa.SetActive(true);
     }
+
+    public void SalirAlMenuInicial()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(nombreEscenaMenu);
+    }
+
+    public void ReiniciarNivel()
+{
+    Time.timeScale = 1f;
+    juegoPausado = false;
+    panelPausa.SetActive(false);
+    panelOpciones.SetActive(false);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+}
 }
