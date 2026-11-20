@@ -32,19 +32,8 @@ public class Guardiacodimovimiento : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
+       
         Animar();
-    }
-
-        private void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(x, y).normalized * moveSpeed;
-    }
-
-        private void GetInput()
-    {
-        x= Input.GetAxisRaw("Horizontal");
-        y= Input.GetAxisRaw("Vertical");
     }
 
 }
