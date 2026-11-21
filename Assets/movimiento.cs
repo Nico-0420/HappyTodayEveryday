@@ -8,6 +8,8 @@ public class movimiento : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
 
+    public GameObject gameover;
+
     private float x;
     private float y;
 
@@ -53,6 +55,8 @@ public class movimiento : MonoBehaviour
         {
             moveSpeed = 0;
             x = 0;
+
+            gameover.SetActive(true);
         }
     }
 

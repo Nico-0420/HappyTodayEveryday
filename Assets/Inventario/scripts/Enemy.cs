@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        
         target = GameObject.Find("Player").transform;
     }
 
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     {
         if (target)
         {
+            
             UnityEngine.Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
 
@@ -37,6 +39,8 @@ public class Enemy : MonoBehaviour
             rb.linearVelocity = new UnityEngine.Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
         }
     }
+
+
 
    
 

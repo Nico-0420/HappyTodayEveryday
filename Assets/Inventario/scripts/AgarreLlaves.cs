@@ -5,10 +5,12 @@ using UnityEngine;
 public class AgarreLlaves : MonoBehaviour
 {
     public GameManager GameManager { get; private set; }
+    public Dialogue dialogue;
+    public DialogueObject dialog;
 
     void Start()
     {
-        // Buscamos el GameManager en la escena al iniciar
+
         GameManager = FindAnyObjectByType<GameManager>();
         
         if (GameManager == null)
@@ -29,6 +31,7 @@ public class AgarreLlaves : MonoBehaviour
             }
 
             Destroy(collision.gameObject);
+             dialogue.ShowDialogue(dialog);
             
         }
     }

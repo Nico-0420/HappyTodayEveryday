@@ -4,19 +4,21 @@ using UnityEngine;
 public class PuertaFinal : MonoBehaviour
 {
     private bool playerNear = false;
+    private NextLevel level;
 
     void Update()
     {
         if (playerNear && Input.GetKeyDown(KeyCode.E))
         {
-            if (GameManager.currentKeys >= 3)
+            if (GameManager.currentKeys == 1)
             {
                 Destroy(gameObject);
                 Debug.Log("¡Puerta abierta!");
+                level.next();
             }
             else
             {
-                Debug.Log("Necesitas las 3 llaves para abrir la puerta.");
+                Debug.Log("Necesitas las llaves para abrir la puerta.");
             }
         }
     }
